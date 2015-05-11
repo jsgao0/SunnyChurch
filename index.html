@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
-<html class="no-js" lang="en" >
+<html lang="en" ng-app="sunnychurch">
 	<head>
     	<meta charset='utf-8'>
-		<!-- If you delete this meta tag World War Z will become a reality -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<meta http-equiv="X-UA-Compatible" content="chrome=1">
 		<title>財團法人台北市基督教興隆教會</title>
-		<script src="./javascripts/vendor/modernizr.js"></script>
+		<link rel="stylesheet" type="text/css" href="./public/components/bootstrap/dist/css/bootstrap.min.css">
+		<style type="text/css">.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }</style>
+		<style type="text/css">
+			.section {
+				padding: 0 5%;
+				width: 100%;
+			}
+		</style>
 		<script type="text/javascript">
 			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -18,43 +23,36 @@
 				pageTracker._trackPageview();
 			} catch(err) {}
 		</script>
-
-		<!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
-		<link rel="stylesheet" href="./stylesheets/normalize.css">
-		<link rel="stylesheet" href="./stylesheets/foundation.min.css">
-
-		<!-- If you are using the gem version, you need this only -->
-		<!-- <link rel="stylesheet" href="stylesheets/app.css"> -->
-
-
+		<script type="text/javascript" src="./public/components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="./public/javascript/ui-bootstrap-tpls-0.13.0.min.js"></script>
+		<script type="text/javascript">
+			angular.module('sunnychurch', ['ui.bootstrap']);
+		</script>
 	</head>
 	<body>
-
-		<!-- body content here -->
-
-		<script src="./javascripts/vendor/jquery.js"></script>
-		<script src="./javascripts/foundation.min.js"></script>
-		<script>
-			$(document).foundation();
-		</script>
-		<p>全人教育發展協會</p>
-		<p>教會簡介</p>	
-		<p>教會消息</p>	
-		<p>教會行事曆</p>	
-		<p>主日信息</p>	
-		<p>研習 靈修園地</p>	
-		<p>本季事奉表</p>	
-		<p>i-pray 禱告會</p>	
-		<p>專題專文</p>	
-		<p>興隆部落</p>
-		<p>興隆臉書</p>
-		<p>雲彩見證</p>
-		<p>活動照片</p>
-		<p>琴與爐</p>
-		<p>下載專區</p>
-		<p>訪客留言</p>
-		<p>各部會議記錄</p>
-		<p>我要奉獻</p>
-		<p>學生們看這裡</p>
+		<div class="section">
+			<a href="https://www.flickr.com/photos/slc133/5928462841" title="IMG_5984 by 財團法人台北市基督教興隆教會 / 台北市興隆社區全人教育發展協會, on Flickr" class="col-md-12"><img src="https://c3.staticflickr.com/7/6136/5928462841_e23d7b94bc_o.jpg" width="1800" height="1200" alt="IMG_5984" class="img-responsive"></a>
+		</div>
+		<div class="section">
+			<p>全人教育發展協會</p>
+			<p>教會簡介</p>	
+			<p>教會消息</p>	
+			<p>教會行事曆</p>	
+			<p>主日信息</p>	
+			<p>研習 靈修園地</p>	
+			<p>本季事奉表</p>	
+			<p>i-pray 禱告會</p>	
+			<p>專題專文</p>	
+			<p>興隆部落</p>
+			<p>興隆臉書</p>
+			<p>雲彩見證</p>
+			<p>活動照片</p>
+			<p>琴與爐</p>
+			<p>下載專區</p>
+			<p>訪客留言</p>
+			<p>各部會議記錄</p>
+			<p>我要奉獻</p>
+			<p>學生們看這裡</p>
+		</div>
 	</body>
 </html>

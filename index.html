@@ -4,13 +4,20 @@
     	<meta charset='utf-8'>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<meta http-equiv="X-UA-Compatible" content="chrome=1">
-		<title>財團法人台北市基督教興隆教會</title>
+		<title>基督教 | 興隆教會 | 財團法人 | 台北市</title>
 		<link rel="stylesheet" type="text/css" href="./public/components/bootstrap/dist/css/bootstrap.min.css">
 		<style type="text/css">.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }</style>
 		<style type="text/css">
+			body {
+				font-family: 新細明體, PMingLiU, "儷宋 Pro", "LiSong Pro", "蘋果儷細宋", "Apple LiSong", "Arial Narrow", Arial, Helvetica, sans-serif !important;
+			}
 			.section {
 				padding: 0 5%;
 				width: 100%;
+			}
+			.carousel-inner>.item {
+				-webkit-transition: 1s ease-in-out left;
+				transition: 1s ease-in-out left;
 			}
 		</style>
 		<script type="text/javascript">
@@ -26,33 +33,66 @@
 		<script type="text/javascript" src="./public/components/angular/angular.min.js"></script>
 		<script type="text/javascript" src="./public/javascript/ui-bootstrap-tpls-0.13.0.min.js"></script>
 		<script type="text/javascript">
-			angular.module('sunnychurch', ['ui.bootstrap']);
+			angular.module('sunnychurch', ['ui.bootstrap'])
+			.controller('CarouselDemoCtrl', function ($scope) {
+				$scope.interval = 3000;
+				$scope.slides = [
+					{image: 'https://c3.staticflickr.com/7/6136/5928462841_e23d7b94bc_o.jpg" width="1800" height="1200" alt="IMG_5984'},
+					{image: 'https://c1.staticflickr.com/5/4139/4769395945_ce4d6fb80a_o.jpg" width="3888" height="2592" alt="IMG_2571'}
+				];
+				
+			});
 		</script>
 	</head>
 	<body>
-		<div class="section">
-			<a href="https://www.flickr.com/photos/slc133/5928462841" title="IMG_5984 by 財團法人台北市基督教興隆教會 / 台北市興隆社區全人教育發展協會, on Flickr" class="col-md-12"><img src="https://c3.staticflickr.com/7/6136/5928462841_e23d7b94bc_o.jpg" width="1800" height="1200" alt="IMG_5984" class="img-responsive"></a>
+<!-- 		<div class="section" class="col-md-12">
+			<a href="https://www.flickr.com/photos/slc133/5928462841" title="IMG_5984 by 財團法人台北市基督教興隆教會 / 台北市興隆社區全人教育發展協會, on Flickr">
+				<img src="https://c3.staticflickr.com/7/6136/5928462841_e23d7b94bc_o.jpg" width="1800" height="1200" alt="IMG_5984" class="img-responsive">
+			</a>
+			<a href="https://www.flickr.com/photos/slc133/4769395945" title="IMG_2571 by 財團法人台北市基督教興隆教會 / 台北市興隆社區全人教育發展協會, 於 Flickr">
+				<img src="https://c1.staticflickr.com/5/4139/4769395945_ce4d6fb80a_o.jpg" width="3888" height="2592" alt="IMG_2571" class="img-responsive">
+			</a>
+		</div> -->
+		<header class="col-md-12">
+			<h1>基督教 興隆教會</h1>
+		</header>
+		<div class="container">
+			<div class="col-md-6" ng-controller="CarouselDemoCtrl">
+				<div>
+					<carousel interval="interval">
+						<slide ng-repeat="slide in slides" active="slide.active">
+							<img ng-src="{{slide.image}}" class="img-responsive">
+							<div class="carousel-caption">
+							</div>
+						</slide>
+					</carousel>
+				</div>
+			</div>
+
+			<div class="section">
+				<p>全人教育發展協會</p>
+				<p>教會簡介</p>	
+				<p>教會消息</p>	
+				<p>教會行事曆</p>	
+				<p>主日信息</p>	
+				<p>研習 靈修園地</p>	
+				<p>本季事奉表</p>	
+				<p>i-pray 禱告會</p>	
+				<p>專題專文</p>	
+				<p>興隆部落</p>
+				<p>興隆臉書</p>
+				<p>雲彩見證</p>
+				<p>活動照片</p>
+				<p>琴與爐</p>
+				<p>下載專區</p>
+				<p>訪客留言</p>
+				<p>各部會議記錄</p>
+				<p>我要奉獻</p>
+				<p>學生們看這裡</p>
+			</div>
 		</div>
-		<div class="section">
-			<p>全人教育發展協會</p>
-			<p>教會簡介</p>	
-			<p>教會消息</p>	
-			<p>教會行事曆</p>	
-			<p>主日信息</p>	
-			<p>研習 靈修園地</p>	
-			<p>本季事奉表</p>	
-			<p>i-pray 禱告會</p>	
-			<p>專題專文</p>	
-			<p>興隆部落</p>
-			<p>興隆臉書</p>
-			<p>雲彩見證</p>
-			<p>活動照片</p>
-			<p>琴與爐</p>
-			<p>下載專區</p>
-			<p>訪客留言</p>
-			<p>各部會議記錄</p>
-			<p>我要奉獻</p>
-			<p>學生們看這裡</p>
-		</div>
+		<footer class="container">
+
+		</footer>
 	</body>
 </html>

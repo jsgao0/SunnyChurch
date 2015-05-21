@@ -6,6 +6,9 @@
     	<meta http-equiv="X-UA-Compatible" content="chrome=1">
 		<title>基督教 | 興隆教會 | 財團法人 | 台北市</title>
 		<link rel="stylesheet" type="text/css" href="./public/components/bootstrap/dist/css/bootstrap.min.css">
+		<style type="text/css">
+			html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers */ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; }
+		</style>
 		<style type="text/css">.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }</style>
 		<style type="text/css">
 			body {
@@ -34,6 +37,9 @@
 		<script type="text/javascript" src="./public/javascript/ui-bootstrap-tpls-0.13.0.min.js"></script>
 		<script type="text/javascript">
 			angular.module('sunnychurch', ['ui.bootstrap'])
+			.controller('headerCtrl', function($scope) {
+				$scope.isMenuCollapsed = false;
+			})
 			.controller('CarouselDemoCtrl', function ($scope) {
 				$scope.interval = 3000;
 				$scope.slides = [
@@ -53,8 +59,25 @@
 				<img src="https://c1.staticflickr.com/5/4139/4769395945_ce4d6fb80a_o.jpg" width="3888" height="2592" alt="IMG_2571" class="img-responsive">
 			</a>
 		</div> -->
-		<header class="col-md-12">
-			<h1>基督教 興隆教會</h1>
+		<header class="navbar navbar-default navbar-fixed-top" ng-controller="headerCtrl">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3" ng-click="isMenuCollapsed = !isMenuCollapsed">
+	                    <span class="sr-only">Toggle navigation</span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                </button>
+					<a id="church-logo">興隆教會</a>
+				</div>
+				<nav id="church-header" class="collapse" collapse="isMenuCollapsed">
+					<ul class="nav navbar-nav">
+						<li>1</li>
+						<li>1</li>
+						<li>1</li>
+					</ul>
+				</nav>
+			</div>
 		</header>
 		<div class="container">
 			<div class="col-md-6" ng-controller="CarouselDemoCtrl">

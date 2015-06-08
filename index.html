@@ -5,23 +5,32 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<meta http-equiv="X-UA-Compatible" content="chrome=1">
 		<title>基督教 | 興隆教會 | 財團法人 | 台北市</title>
-		<link rel="stylesheet" type="text/css" href="./public/components/bootstrap/dist/css/bootstrap.min.css">
 		<style type="text/css">
 			html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers  article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; }*/
 		</style>
 		<style type="text/css">.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }</style>
+		<link rel="stylesheet" type="text/css" href="./public/components/bootstrap/dist/css/bootstrap.min.css">
 		<style type="text/css">
 			body {
 				font-family: 新細明體, PMingLiU, "儷宋 Pro", "LiSong Pro", "蘋果儷細宋", "Apple LiSong", "Arial Narrow", Arial, Helvetica, sans-serif !important;
+			}
+			footer {
+				padding: 40px 0;
+			}
+			.main-banner {
+				padding: 55px 0;
+			}
+			.footer-row {
+				padding: 30px 0;
 			}
 			.header-placeholder {
 				height: 50px;
 			}
 			.container .section {
-				min-height: 420px;
+				min-height: 420px; // Temp
 			}
 			.container .section:nth-of-type(odd) {
-				background: #333;
+				background: #eee;
 			}
 		</style>
 		<script type="text/javascript">
@@ -120,6 +129,13 @@
 			</div>
 		</header>
 		<div class="header-placeholder"></div>
+		<div class="col-md-12 bg-info main-banner">
+			<div class="container">
+				<div class="col-md-12">
+					<h1>基督教興隆教會</h1>
+				</div>
+			</div>
+		</div>
 		<div class="container">
 			<div class="col-md-12" ng-controller="CarouselDemoCtrl">
 				<div>
@@ -159,7 +175,44 @@
 			</div>
 		</div>
 		<footer class="container">
-
+			<div class="col-md-12 footer-row">
+				<div class="col-md-3 text-center"><h3>健康</h3></div>
+				<div class="col-md-3 text-center"><h3>受造</h3></div>
+				<div class="col-md-3 text-center"><h3>行善</h3></div>
+				<div class="col-md-3 text-center"><h3>宣教</h3></div>
+			</div>
+			<div class="col-md-12 footer-row">
+				<div class="col-md-6 text-center"><h4>幸福的家庭</h4></div>
+				<div class="col-md-6 text-center"><h4>聖潔的教會</h4></div>
+			</div>
+			<div class="col-md-12 text-center">
+				<p class="col-md-3"></p>
+				<p class="col-md-3">
+					<strong>財團法人台北市基督教興隆教會</strong>
+				</p>
+				<p class="col-md-3">
+					<a href="https://www.google.com.tw/maps/place/%E8%B2%A1%E5%9C%98%E6%B3%95%E4%BA%BA%E5%8F%B0%E5%8C%97%E5%B8%82%E5%9F%BA%E7%9D%A3%E6%95%99%E8%88%88%E9%9A%86%E6%95%99%E6%9C%83/@24.996382,121.54748,17z/data=!3m1!4b1!4m2!3m1!1s0x3442aa0571a5f695:0x8d65412c7ee5423f?hl=zh-TW" target="_blank">11687 台北市文山區景華街167號</a>
+				</p>
+			</div>
+			<div class="col-md-12 text-center">
+				<div class="col-md-4"></div>
+				<p class="col-md-4">
+					<span>統一編號：01039405</span>
+					<span>劃撥帳號：17908921</span>
+				</p>
+			</div>
+			<div class="col-md-12 text-center">
+				<p class="col-md-3"></p>
+				<p class="col-md-3">
+					<abbr title="Phone">TEL：</abbr><br>
+					<span>（02）2932-2638</span><br>
+					<span>（02）2933-4151</span>
+				</p>
+				<p class="col-md-3">
+					<abbr title="Phone">FAX：</abbr><br>
+					<span>（02）8931-8204</span>
+				</p>
+			</div>
 		</footer>
 	</body>
 </html>

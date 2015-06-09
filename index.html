@@ -29,6 +29,9 @@
 			.container .section {
 				min-height: 420px; // Temp
 			}
+			.container .section .section-title {
+				padding-top: 50px;
+			}
 			.container .section:nth-of-type(odd) {
 				background: #eee;
 			}
@@ -86,31 +89,50 @@
 	                    <a href="#top" role="button" class="navbar-brand">興隆教會</a>
 	                    <li class="dropdown" dropdown>
 	                        <a class="dropdown-toggle" role="button" dropdown-toggle>
-	                            教會相關 <b class="caret"></b>
+	                            教會動態 <b class="caret"></b>
 	                        </a>
 	                        <ul class="dropdown-menu" role="menu">
 	                            <li><a href="#introduction">教會簡介</a></li>
-	                            <li><a href="#news">教會消息</a></li>
+	                            <li><a href="#announcement">教會消息</a></li>
 	                            <li><a href="#schedule">教會行事曆</a></li>
 	                        </ul>
 	                    </li>
 
 	                    <li class="dropdown" dropdown>
 	                    	<a class="dropdown-toggle" role="button" dropdown-toggle>
-	                    		聖靈交通 <b class="caret"></b>
+	                    		信息分享 <b class="caret"></b>
 	                    	</a>
 	                    	<ul class="dropdown-menu" role="menu">
 	                            <li><a href="#sunday">主日信息</a></li>
 	                    		<li><a href="#gathering">讀經聚會</a></li>
-	                    		<li><a href="#garden">靈修園地</a></li>
+	                    		<li><a href="#devotion">靈修園地</a></li>
+	                    		<li><a href="#article">專題專文</a></li>
 	                    	</ul>
 	                    </li>
 
-	                    <li class="dropdown" dropdown>
+	                     <li class="dropdown" dropdown>
 	                    	<a class="dropdown-toggle" role="button" dropdown-toggle>
-	                    		
+	                    		事奉同工 <b class="caret"></b>
 	                    	</a>
+	                    	<ul class="dropdown-menu" role="menu">
+	                            <li><a href="#serve">教會事奉</a></li>
+	                    		<li><a href="#record">會議記錄</a></li>
+	                    	</ul>
 	                    </li>
+
+	                     <li class="dropdown" dropdown>
+	                    	<a class="dropdown-toggle" role="button" dropdown-toggle>
+	                    		興隆社群 <b class="caret"></b>
+	                    	</a>
+	                    	<ul class="dropdown-menu" role="menu">
+	                            <li><a href="#youtube">Youtube</a></li>
+	                    		<li><a href="#facebook">Facebook</a></li>
+	                    		<li><a href="#flickr">Flickr</a></li>
+	                    	</ul>
+	                    </li>
+
+                        <li><a href="#pray-for">代禱事項</a></li>
+                		<li><a href="#donate">奉獻專區</a></li>
 	                </ul>
 	            </nav>
 				<nav collapse="!isMenuCollapsed">
@@ -118,14 +140,7 @@
 	                    <li><a href="#getting_started" ng-click="isMenuCollapsed = !isMenuCollapsed">Getting started</a></li>
 	                    <li><a href="#directives_small" ng-click="isMenuCollapsed = !isMenuCollapsed">Directives</a></li>
 	                </ul>
-	            </nav><!-- 
-				<nav class="visible-xs" collapse="!isMenuCollapsed">
-					<ul class="nav navbar-nav">
-						<li>1</li>
-						<li>1</li>
-						<li>1</li>
-					</ul>
-				</nav> -->
+	            </nav>
 			</div>
 		</header>
 		<div class="header-placeholder"></div>
@@ -150,28 +165,58 @@
 			</div>
 
 			<div class="section col-md-12">
-				<div class="col-md-4">教會簡介</div>
-				<div class="col-md-4">教會消息</div>
-				<div class="col-md-4">教會行事曆</div>
+				<div id="introduction" class="section-title col-md-4">
+					<h4>教會簡介</h4>
+				</div>
+				<div id="announcement" class="section-title col-md-4">
+					<h4>教會消息</h4>
+				</div>
+				<div id="schedule" class="section-title col-md-4">
+					<h4>教會行事曆</h4>
+				</div>
 			</div>
 			<div class="section col-md-12">
-				<div class="col-md-3">主日信息</div>
-				<div class="col-md-3">讀經聚會</div>
-				<div class="col-md-3">靈修園地</div>
-				<div class="col-md-3">專題專文</div>
+				<div id="sunday" class="section-title col-md-3">
+					<h4>主日信息</h4>
+				</div>
+				<div id="gathering" class="section-title col-md-3">
+					<h4>讀經聚會</h4>
+				</div>
+				<div id="devotion" class="section-title col-md-3">
+					<h4>靈修園地</h4>
+				</div>
+				<div id="article" class="section-title col-md-3">
+					<h4>專題專文</h4>
+				</div>
 			</div>
 			<div class="section col-md-12">
-				<div class="col-md-6">教會事奉</div>
-				<div class="col-md-6">會議記錄</div>
+				<div id="serve" class="section-title col-md-6">
+					<h4>教會事奉</h4>
+				</div>
+				<div id="record" class="section-title col-md-6">
+					<h4>會議記錄</h4>
+				</div>
 			</div>
 			<div class="section col-md-12">
-				<div class="col-md-4">Youtube</div>
-				<div class="col-md-4">Facebook</div>
-				<div class="col-md-4">Flickr</div>
+				<div id="youtube" class="section-title col-md-4">
+					<h4>Youtube</h4>
+				</div>
+				<div id="facebook" class="section-title col-md-4">
+					<h4>Facebook</h4>
+				</div>
+				<div id="flickr" class="section-title col-md-4">
+					<h4>Flickr</h4>
+				</div>
 			</div>
 			<div class="section col-md-12">
-				<div class="col-md-6">代禱事項</div>
-				<div class="col-md-6">奉獻專區</div>
+				<div id="pray-for" class="section-title container">
+					<h4>代禱事項</h4>
+				</div>
+			</div>
+			<div class="section col-md-12">
+				<div id="donate" class="section-title container">
+					<h4>奉獻專區</h4>
+				</div>
 			</div>
 		</div>
 		<footer class="container">

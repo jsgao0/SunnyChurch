@@ -83,22 +83,14 @@
 			.controller('CarouselDemoCtrl', function ($scope) {
 				$scope.interval = 5000;
 				$scope.slides = [
-					{image: 'https://c3.staticflickr.com/7/6136/5928462841_e23d7b94bc_o.jpg" width="1800" height="1200" alt="IMG_5984'},
-					{image: 'https://c1.staticflickr.com/5/4139/4769395945_ce4d6fb80a_o.jpg" width="3888" height="2592" alt="IMG_2571'}
+					{image: 'https://c3.staticflickr.com/7/6136/5928462841_e23d7b94bc_o.jpg" height="600" alt="IMG_5984'},
+					{image: 'https://c1.staticflickr.com/5/4139/4769395945_ce4d6fb80a_o.jpg" height="600" alt="IMG_2571'}
 				];
 				
 			});
 		</script>
 	</head>
 	<body>
-<!-- 		<div class="section" class="col-md-12">
-			<a href="https://www.flickr.com/photos/slc133/5928462841" title="IMG_5984 by 財團法人台北市基督教興隆教會 / 台北市興隆社區全人教育發展協會, on Flickr">
-				<img src="https://c3.staticflickr.com/7/6136/5928462841_e23d7b94bc_o.jpg" width="1800" height="1200" alt="IMG_5984" class="img-responsive">
-			</a>
-			<a href="https://www.flickr.com/photos/slc133/4769395945" title="IMG_2571 by 財團法人台北市基督教興隆教會 / 台北市興隆社區全人教育發展協會, 於 Flickr">
-				<img src="https://c1.staticflickr.com/5/4139/4769395945_ce4d6fb80a_o.jpg" width="3888" height="2592" alt="IMG_2571" class="img-responsive">
-			</a>
-		</div> -->
 		<header class="navbar navbar-default navbar-fixed-top" ng-controller="headerCtrl">
 			<div class="container">
 				<div class="navbar-header">
@@ -222,7 +214,7 @@
 				</div>
 			</div>
 			<div class="section col-md-12">
-				<div id="youtube" class="section-title col-md-4">
+				<div id="youtube" class="section-title col-md-12">
 					<h4>
 						<a href="https://www.youtube.com/channel/UC-hKJ5jylBP0LDJ380NPMmA/videos" target="_blank">Youtube</a>
 					</h4>
@@ -232,15 +224,20 @@
 					<div class="col-md-12 videoWrapper" ng-hide="true">
 						<iframe src="https://www.youtube.com/embed/B0FBkuR7-qU" frameborder="0" allowfullscreen></iframe>
 					</div>
-					<div>
+					<div class="col-md-12 videoWrapper" ng-hide="true">
 						<iframe src="https://www.youtube.com/embed/DpsctTszcEQ" frameborder="0" allowfullscreen></iframe>
 					</div>
+					<div class="col-md-12 videoWrapper" ng-hide="false">
+						<iframe src="https://www.youtube.com/embed/r8r4eLnfc24" frameborder="0" allowfullscreen></iframe>
+					</div>
 				</div>
-				<div id="facebook" class="section-title col-md-4">
+			</div>
+			<div class="section col-md-12">
+				<div id="facebook" class="section-title col-md-6">
 					<h4><a href="https://www.facebook.com/profile.php?id=100001582452250" target="_blank">Facebook</a></h4>
 					興隆教會的Facebook官方帳號，您可以在上面看到許多最新動態。<a href="https://www.facebook.com/groups/787555811338498/?ref=br_rs" target="_blank">2015 興隆教會短宣隊</a>是今年前往短宣的消息。	
 				</div>
-				<div id="flickr" class="section-title col-md-4">
+				<div id="flickr" class="section-title col-md-6">
 					<h4><a href="https://www.flickr.com/photos/slc133/" target="_blank">Flickr</a></h4>
 					Flickr是一個照片分享的平台。在興隆教會的Flickr帳號中，您可以看到許多過往在興隆教會舉辦的活動相片。同時，您也可以像您的朋友分享這些幸福的內容。
 				</div>

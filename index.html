@@ -80,17 +80,22 @@
 						console.log(data);
 					})
 			})
-			.controller('CarouselDemoCtrl', function ($scope) {
-				$scope.interval = 5000;
-				$scope.slides = [
-					{image: 'https://c3.staticflickr.com/7/6136/5928462841_e23d7b94bc_o.jpg" height="600" alt="IMG_5984'},
-					{image: 'https://c1.staticflickr.com/5/4139/4769395945_ce4d6fb80a_o.jpg" height="600" alt="IMG_2571'}
-				];
-				
-			});
 		</script>
 
 		<script type="text/javascript">
+			// url: String
+			// height: Integer
+			// width: Integer
+			// autoplay: Bit(0 or 1)
+			function youtubeIframe(vid, autoplay) {
+				var iframe = document.createElement('iframe');
+				var url = "http://youtube.com/embed/" + vid;
+				if(autoplay == 1) url += "?autoplay=1";
+				iframe.setAttribute("src", url);
+				iframe.frameBorder = 0;
+				iframe.allowfullscreen = "";
+				return iframe;
+			}
 			function youtubeRequest() {
 				var request = gapi.client.youtube.search.list({
 					part: 'snippet',
@@ -98,12 +103,17 @@
 					order: 'date'
 				});
 				request.then(function(response) {
-					console.log(response);
+					var newestVideo = response.result.items[0];
+					var videoIFrame = youtubeIframe(newestVideo.id.videoId, 1);
+					document
+						.getElementById("youtube-player")
+						.getElementsByClassName("videoWrapper")[0]
+						.appendChild(videoIFrame);
+
 				}, function(reason) {
 					console.log('Error: ' + reason.result.error.message);
 				})
 			}
-
 			function init() {
 				gapi.client.setApiKey('AIzaSyAQvs6nopJKOg90JVq52KCze8zavB8hEpY');
 				gapi.client.load('youtube', 'v3').then(youtubeRequest);
@@ -188,17 +198,11 @@
 			</div>
 		</header>
 		<div class="header-placeholder"></div>
-			<div class="col-md-12" ng-controller="CarouselDemoCtrl">
-				<div>
-					<carousel interval="interval">
-						<slide ng-repeat="slide in slides" active="slide.active">
-							<img ng-src="{{slide.image}}" class="img-responsive">
-							<div class="carousel-caption">
-							</div>
-						</slide>
-					</carousel>
-				</div>
+		<div id="youtube-player">
+			<div class="videoWrapper">
+
 			</div>
+		</div>
 		<div class="container">
 
 			<div class="section col-md-12">
@@ -232,25 +236,6 @@
 				</div>
 				<div id="record" class="section-title col-md-6">
 					<h4>會議記錄</h4>
-				</div>
-			</div>
-			<div class="section col-md-12">
-				<div id="youtube" class="section-title col-md-12">
-					<h4>
-						<a href="https://www.youtube.com/channel/UC-hKJ5jylBP0LDJ380NPMmA/videos" target="_blank">Youtube</a>
-					</h4>
-					<div class="col-md-12 videoWrapper" ng-hide="true">
-						<iframe src="https://www.youtube.com/embed/zf3ERWIILDc" frameborder="0" allowfullscreen></iframe>
-					</div>
-					<div class="col-md-12 videoWrapper" ng-hide="true">
-						<iframe src="https://www.youtube.com/embed/B0FBkuR7-qU" frameborder="0" allowfullscreen></iframe>
-					</div>
-					<div class="col-md-12 videoWrapper" ng-hide="true">
-						<iframe src="https://www.youtube.com/embed/DpsctTszcEQ" frameborder="0" allowfullscreen></iframe>
-					</div>
-					<div class="col-md-12 videoWrapper" ng-hide="false">
-						<iframe src="https://www.youtube.com/embed/r8r4eLnfc24" frameborder="0" allowfullscreen></iframe>
-					</div>
 				</div>
 			</div>
 			<div class="section col-md-12">

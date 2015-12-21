@@ -27,9 +27,6 @@
 			.main-banner {
 				padding: 55px 0;
 			}
-			.footer-row {
-				padding: 30px 0;
-			}
 			.header-placeholder {
 				height: 50px;
 			}
@@ -37,7 +34,7 @@
 				min-height: 420px; // Temp
 			}
 			.container .section .section-title {
-				padding-top: 50px;
+				padding-top: 20px;
 			}
 			.container .section:nth-of-type(odd) {
 				background: #eee;
@@ -79,10 +76,24 @@
 					.success(function(data, status) {
 						console.log(data);
 					})
-			})
+			}).controller('CarouselDemoCtrl', function ($scope) {
+				$scope.myInterval = 5000;
+				$scope.noWrapSlides = false;
+				var slides = ['3649', '3727', '3789', '5637', '5642', '5661'];
+				$scope.slides = slides.map(function(e) {
+					return '/public/photo/_DSC' + e + '.jpg';
+				});
+			});
 		</script>
 
 		<script type="text/javascript">
+			function youtubeTitleParser(vTitle) {
+				if(typeof vTitle === 'string') {
+					var arr = vTitle.split(" ");
+					return arr;
+				}
+			}
+
 			// url: String
 			// height: Integer
 			// width: Integer
@@ -104,7 +115,12 @@
 				});
 				request.then(function(response) {
 					var newestVideo = response.result.items[0];
-					var videoIFrame = youtubeIframe(newestVideo.id.videoId, 1);
+					var titleArray = youtubeTitleParser(newestVideo.snippet.title);
+					document.getElementById("speech-speaker").innerHTML = "講者: " + titleArray[2];
+					document.getElementById("speech-subject").innerHTML = "講題: " + titleArray[1];
+					document.getElementById("speech-date").innerHTML = "日期: " + titleArray[0];
+
+					var videoIFrame = youtubeIframe(newestVideo.id.videoId, 0);
 					document
 						.getElementById("youtube-player")
 						.getElementsByClassName("videoWrapper")[0]
@@ -198,86 +214,70 @@
 			</div>
 		</header>
 		<div class="header-placeholder"></div>
-		<div id="youtube-player">
-			<div class="videoWrapper">
-
+		<div class="section" ng-controller="CarouselDemoCtrl">
+			<div style="height: 500px;">
+				<uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+					<uib-slide ng-repeat="slide in slides" active="slide.active">
+						<img ng-src="{{slide}}" style="margin:auto;">
+						<div class="carousel-caption">
+						<h4>Slide {{$index}}</h4>
+						</div>
+					</uib-slide>
+				</uib-carousel>
 			</div>
 		</div>
 		<div class="container">
-
 			<div class="section col-md-12">
-				<div id="introduction" class="section-title col-md-4">
-					<h4>教會簡介</h4>
+				<div id="announcement" class="section-title col-md-6">
+					<h3>教會消息</h3>
 				</div>
-				<div id="announcement" class="section-title col-md-4">
-					<h4>教會消息</h4>
-				</div>
-				<div id="schedule" class="section-title col-md-4">
-					<h4>教會行事曆</h4>
+				<div id="schedule" class="section-title col-md-6">
+					<h3>教會行事曆</h3>
 				</div>
 			</div>
 			<div class="section col-md-12">
-				<div id="sunday" class="section-title col-md-3">
-					<h4>主日信息</h4>
+				<div id="article" class="section-title col-md-6">
+					<h3>講道影音</h3>
+					<h4 id="speech-speaker"></h4>
+					<h4 id="speech-subject"></h4>
+					<h4 id="speech-date"></h4>
 				</div>
-				<div id="gathering" class="section-title col-md-3">
-					<h4>讀經聚會</h4>
-				</div>
-				<div id="devotion" class="section-title col-md-3">
-					<h4>靈修園地</h4>
-				</div>
-				<div id="article" class="section-title col-md-3">
-					<h4>專題專文</h4>
+				<div id="youtube-player" class="section-title col-md-6">
+					<h3></h3>
+					<div class="videoWrapper">
+					</div>
 				</div>
 			</div>
 			<div class="section col-md-12">
 				<div id="serve" class="section-title col-md-6">
-					<h4>教會事奉</h4>
+					<h3>教會事奉</h3>
 				</div>
 				<div id="record" class="section-title col-md-6">
-					<h4>會議記錄</h4>
+					<h3>會議記錄</h3>
 				</div>
 			</div>
 			<div class="section col-md-12">
-				<div id="facebook" class="section-title col-md-6">
-					<h4><a href="https://www.facebook.com/profile.php?id=100001582452250" target="_blank">Facebook</a></h4>
-					興隆教會的Facebook官方帳號，您可以在上面看到許多最新動態。<a href="https://www.facebook.com/groups/787555811338498/?ref=br_rs" target="_blank">2015 興隆教會短宣隊</a>是今年前往短宣的消息。	
-				</div>
-				<div id="flickr" class="section-title col-md-6">
-					<h4><a href="https://www.flickr.com/photos/slc133/" target="_blank">Flickr</a></h4>
-					Flickr是一個照片分享的平台。在興隆教會的Flickr帳號中，您可以看到許多過往在興隆教會舉辦的活動相片。同時，您也可以像您的朋友分享這些幸福的內容。
-				</div>
-			</div>
-			<div class="section col-md-12">
-				<div id="pray-for" class="section-title container">
-					<h4>代禱事項</h4>
-					<p>即將上線...</p>
-				</div>
-			</div>
-			<div class="section col-md-12">
-				<div id="donate" class="section-title container">
-					<h4>奉獻專區</h4>
-					<p>戶名：財團法人台北市基督教興隆教會</p>
-					<p>統編：01039405</p>
-					<p>郵局劃撥帳號：17908921</p>
-					<ins>神能將各樣的恩惠，多多的加給你們。使你們凡事常常充足，能多行各樣善事。如經上所記『他施捨錢財，賙濟貧窮，他的仁義存到永遠』〈林後九：8-9〉</ins>
+				<div id="introduction" class="section-title col-md-12">
+					<h3>教會簡介</h3>
 				</div>
 			</div>
 		</div>
 		<footer class="container">
-			<div class="col-md-12 footer-row">
+			<div class="col-md-12">
+				<div class="col-md-6 text-center"><h2>幸福的家庭</h2></div>
+				<div class="col-md-6 text-center"><h2>聖潔的教會</h2></div>
+			</div>
+			<div class="col-md-12">
 				<div class="col-md-3 text-center"><h3>健康</h3></div>
 				<div class="col-md-3 text-center"><h3>受造</h3></div>
 				<div class="col-md-3 text-center"><h3>行善</h3></div>
 				<div class="col-md-3 text-center"><h3>宣教</h3></div>
 			</div>
-			<div class="col-md-12 footer-row">
-				<div class="col-md-6 text-center"><h4>幸福的家庭</h4></div>
-				<div class="col-md-6 text-center"><h4>聖潔的教會</h4></div>
-			</div>
 			<div class="col-md-12 text-center">
 				<p class="col-md-12">
 					<strong>財團法人台北市基督教興隆教會</strong>
+					<a href="https://www.facebook.com/profile.php?id=100001582452250" target="_blank" title="興隆教會的Facebook官方帳號，您可以在上面看到許多最新動態。">Facebook</a>
+					<a href="https://www.flickr.com/photos/slc133/" target="_blank" title="Flickr是一個照片分享的平台。在興隆教會的Flickr帳號中，您可以看到許多過往在興隆教會舉辦的活動相片。同時，您也可以像您的朋友分享這些幸福的內容。">Flickr</a>
 				</p>
 				<p class="col-md-12">
 					<map center="24.9963818, 121.5474804" zoom="16">
@@ -304,6 +304,15 @@
 					<abbr title="Phone">FAX：</abbr><br>
 					<span>（02）8931-8204</span>
 				</p>
+			</div>
+			<div class="section col-md-12">
+				<div id="donate" class="section-title container">
+					<h4>奉獻專區</h4>
+					<p>戶名：財團法人台北市基督教興隆教會</p>
+					<p>統編：01039405</p>
+					<p>郵局劃撥帳號：17908921</p>
+					<ins>神能將各樣的恩惠，多多的加給你們。使你們凡事常常充足，能多行各樣善事。如經上所記『他施捨錢財，賙濟貧窮，他的仁義存到永遠』〈林後九：8-9〉</ins>
+				</div>
 			</div>
 		</footer>
 	</body>

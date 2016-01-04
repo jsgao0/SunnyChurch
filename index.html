@@ -34,18 +34,18 @@
 				height: 540px;
 				overflow: hidden;
 			}
-			#main-banner > img {
-				z-index: -1;
-				position: absolute;
-				top: -40%;
-				filter: blur(2px) invert(5%);
-				-webkit-filter: blur(2px) invert(5%);
+			#main-banner {
+				/*filter: blur(2px) invert(5%);
+				-webkit-filter: blur(2px) invert(5%);*/
 			}
-			#slogan {
+			#banner-slogan {
 				color: white;
 			}
-			#slogan > h2 {
+			#banner-slogan > h2 {
 				font-size: 400%;
+			}
+			#footer-slogan {
+				padding: 20px;
 			}
 			.highlight {
 				text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
@@ -54,10 +54,8 @@
 				height: 50px;
 			}
 			.container .section {
-				min-height: 420px; // Temp
-			}
-			.container .section .section-title {
-				padding-top: 20px;
+				margin: 15px 0;
+				height: 400px;
 			}
 			.container .section:nth-of-type(odd) {
 				background: #eee;
@@ -77,30 +75,8 @@
 			}
 		</style>
 		<style type="text/css">
-			@media (max-width: 1280px) {
-				#main-banner > img {
-					top: -30%;
-				}
-			}
-			@media (max-width: 960px) {
-				#main-banner {
-					height: 400px;
-				}
-				#main-banner > img {
-					top: -25%;
-				}
-				#slogan > h2 {
-					font-size: 300%;
-				}
-			}
-			@media (max-height: 720px) {
-				#main-banner {
-					height: 300px;
-				}
-				#main-banner > img {
-					top: -10%;
-					min-height: 300px;
-				}
+			.main-banner-1 {
+				background: url("/public/photo/_DSC3649.jpg") 0 -5%;
 			}
 		</style>
 		<script type="text/javascript">
@@ -241,9 +217,8 @@
 				</uib-carousel>
 			</div>
 		</div> -->
-		<div id="main-banner">
-			<img src="/public/photo/_DSC3649.jpg">
-			<div id="slogan" class="text-center col-md-12">
+		<div id="main-banner" class="main-banner-1">
+			<div id="banner-slogan" class="text-center col-md-12">
 				<h2 class="highlight sourcehansans-sc-normal">幸福的家庭, 聖潔的教會</h2>
 			</div>
 		</div>
@@ -265,7 +240,6 @@
 					<h4 id="speech-date"></h4>
 				</div>
 				<div id="youtube-player" class="section-title col-md-6">
-					<h3></h3>
 					<div class="videoWrapper">
 					</div>
 				</div>
@@ -284,52 +258,43 @@
 				</div>
 			</div>
 		</div>
-		<footer class="container">
-			<div class="col-md-12">
-				<div class="col-md-6 text-center"></div>
-				<div class="col-md-6 text-center"></div>
+		<footer>
+			<div id="footer-slogan" class="col-md-12 text-center">
+				<h2>幸福的家庭, 聖潔的教會</h2>
 			</div>
-			<div class="col-md-12">
-				<div class="col-md-3 text-center"><h3>健康</h3></div>
-				<div class="col-md-3 text-center"><h3>受造</h3></div>
-				<div class="col-md-3 text-center"><h3>行善</h3></div>
-				<div class="col-md-3 text-center"><h3>宣教</h3></div>
-			</div>
-			<div class="col-md-12 text-center">
-				<p class="col-md-12">
-					<strong>財團法人台北市基督教興隆教會</strong>
-					<a href="https://www.facebook.com/profile.php?id=100001582452250" target="_blank" title="興隆教會的Facebook官方帳號，您可以在上面看到許多最新動態。">Facebook</a>
-					<a href="https://www.flickr.com/photos/slc133/" target="_blank" title="Flickr是一個照片分享的平台。在興隆教會的Flickr帳號中，您可以看到許多過往在興隆教會舉辦的活動相片。同時，您也可以像您的朋友分享這些幸福的內容。">Flickr</a>
-				</p>
-				<p class="col-md-12">
-					<map center="24.9963818, 121.5474804" zoom="16">
-						<marker position="24.9963818, 121.5474804" icon="./public/image/tsl_logo.jpg"></marker>
-					</map>
-					<a href="https://www.google.com.tw/maps/place/%E8%B2%A1%E5%9C%98%E6%B3%95%E4%BA%BA%E5%8F%B0%E5%8C%97%E5%B8%82%E5%9F%BA%E7%9D%A3%E6%95%99%E8%88%88%E9%9A%86%E6%95%99%E6%9C%83/@24.996382,121.54748,17z/data=!3m1!4b1!4m2!3m1!1s0x3442aa0571a5f695:0x8d65412c7ee5423f?hl=zh-TW" target="_blank">11687 台北市文山區景華街167號</a>
-				</p>
-			</div>
-			<div class="col-md-12 text-center">
-				<div class="col-md-4"></div>
-				<p class="col-md-4">
-					<span>統一編號：01039405</span>
-					<span>劃撥帳號：17908921</span>
-				</p>
-			</div>
-			<div class="col-md-12 text-center">
-				<p class="col-md-3"></p>
-				<p class="col-md-3">
-					<abbr title="Phone">TEL：</abbr><br>
-					<span><a href="tel:（02）2932-2638">（02）2932-2638</a></span><br>
-					<span><a href="tel:（02）2933-4151">（02）2933-4151</a></span>
-				</p>
-				<p class="col-md-3">
-					<abbr title="Phone">FAX：</abbr><br>
-					<span>（02）8931-8204</span>
-				</p>
-			</div>
-			<div class="section col-md-12">
-				<div id="donate" class="section-title container">
-					<h4>奉獻專區</h4>
+			<div class="container">
+				<div class="col-md-12">
+					<div class="col-md-8">
+						<div class="col-md-12">
+							<a href="https://www.facebook.com/profile.php?id=100001582452250" target="_blank" title="興隆教會的Facebook官方帳號，您可以在上面看到許多最新動態。">Facebook</a>
+							<a href="https://www.flickr.com/photos/slc133/" target="_blank" title="Flickr是一個照片分享的平台。在興隆教會的Flickr帳號中，您可以看到許多過往在興隆教會舉辦的活動相片。同時，您也可以像您的朋友分享這些幸福的內容。">Flickr</a>
+						</div>
+						<div class="col-md-6">
+							<strong>財團法人台北市基督教興隆教會</strong>
+							<div class="col-md-4">
+								<abbr title="Phone">TEL：</abbr><br>
+							</div>
+							<div class="col-md-8">
+								<span><a href="tel:（02）2932-2638">（02）2932-2638</a></span>
+								<!-- <br> -->
+								<!-- <span><a href="tel:（02）2933-4151">（02）2933-4151</a></span> -->
+							</div>
+							<div class="col-md-4">
+								<abbr title="Phone">FAX：</abbr><br>
+							</div>
+							<div class="col-md-8">
+								<span>（02）8931-8204</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<map center="24.9963818, 121.5474804" zoom="16">
+							<marker position="24.9963818, 121.5474804" icon="./public/image/tsl_logo.jpg"></marker>
+						</map>
+					</div>
+				</div>
+
+				<div class="col-md-12">
 					<p>戶名：財團法人台北市基督教興隆教會</p>
 					<p>統編：01039405</p>
 					<p>郵局劃撥帳號：17908921</p>

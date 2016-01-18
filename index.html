@@ -31,7 +31,6 @@
 			}
 			#main-banner {
 				position: relative;
-				height: 540px;
 				overflow: hidden;
 			}
 			#main-banner {
@@ -40,6 +39,7 @@
 			}
 			#banner-slogan {
 				color: white;
+				padding: 0;
 			}
 			#banner-slogan > h2 {
 				font-size: 400%;
@@ -74,11 +74,6 @@
 				height: 100%;
 			}
 		</style>
-		<style type="text/css">
-			.main-banner-1 {
-				background: url("/public/photo/_DSC3649.jpg") 0 -5%;
-			}
-		</style>
 		<script type="text/javascript">
 			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -102,16 +97,17 @@
 					.success(function(data, status) {
 						console.log(data);
 					})
-			}).controller('CarouselDemoCtrl', function ($scope) {
-				$scope.myInterval = 5000;
-				$scope.noWrapSlides = false;
-				var slides = ['3649', '3727', '3789', '5637', '5642', '5661'];
-				$scope.slides = slides.map(function(e) {
-					return {
-						image: '/public/photo/_DSC' + e + '.jpg'
-					};
-				});
 			});
+			// .controller('CarouselDemoCtrl', function ($scope) {
+			// 	$scope.myInterval = 5000;
+			// 	$scope.noWrapSlides = false;
+			// 	var slides = ['3649', '3727', '3789', '5637', '5642', '5661'];
+			// 	$scope.slides = slides.map(function(e) {
+			// 		return {
+			// 			image: '/public/photo/_DSC' + e + '.jpg'
+			// 		};
+			// 	});
+			// });
 		</script>
 
 		<script type="text/javascript">
@@ -219,7 +215,7 @@
 		</div> -->
 		<div id="main-banner" class="main-banner-1">
 			<div id="banner-slogan" class="text-center col-md-12">
-				<h2 class="highlight sourcehansans-sc-normal">幸福的家庭, 聖潔的教會</h2>
+				<img src="public/photo/anson-banner.jpg">
 			</div>
 		</div>
 

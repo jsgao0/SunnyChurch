@@ -23,6 +23,15 @@
 			body {
 				font-family: Microsoft JhengHei, PMingLiU, "儷宋 Pro", "LiSong Pro", "蘋果儷細宋", "Apple LiSong", "Arial Narrow", Arial, Helvetica, sans-serif !important;
 			}
+			.navbar-default {
+				/*background-color: rgba(248, 150, 63, .6) !important;*/
+				background: rgba(240, 152, 25, .8); /* fallback for old browsers */
+				background: -webkit-linear-gradient(to left, rgba(240, 152, 25, .8) , rgba(237, 222, 93, .8)); /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to left, rgba(240, 152, 25, .8), rgba(237, 222, 93, .8)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+			}
+			.navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
+				color: #000;
+			}
 			footer {
 				padding: 40px 0;
 			}
@@ -30,19 +39,8 @@
 				max-width: 100%;
 			}
 			#main-banner {
-				position: relative;
-				overflow: hidden;
-			}
-			#main-banner {
-				/*filter: blur(2px) invert(5%);
-				-webkit-filter: blur(2px) invert(5%);*/
-			}
-			#banner-slogan {
-				color: white;
-				padding: 0;
-			}
-			#banner-slogan > h2 {
-				font-size: 400%;
+				background: url("public/photo/anson-banner.jpg") center top no-repeat;
+				height: 500px;
 			}
 			#footer-slogan {
 				padding: 20px;
@@ -55,10 +53,11 @@
 			}
 			.container .section {
 				margin: 15px 0;
-				height: 400px;
+				/*height: 400px;*/
 			}
 			.container .section:nth-of-type(odd) {
-				background: #eee;
+				/*background: #eee;*/
+				background-color: rgba(248, 150, 63, .6);
 			}
 			.videoWrapper {
 				position: relative;
@@ -72,6 +71,14 @@
 				left: 0;
 				width: 100%;
 				height: 100%;
+			}
+		</style>
+		<style type="text/css">
+			@media screen and (max-width: 779px) {
+				#main-banner {
+					background: url("public/photo/anson-banner.jpg") 30% top no-repeat;
+					height: 400px;
+				}
 			}
 		</style>
 		<script type="text/javascript">

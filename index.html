@@ -137,6 +137,20 @@
 				iframe.allowfullscreen = "";
 				return iframe;
 			}
+			function appendVideos(itmes, amount) {
+				var historyVideos = document.getElementById("historyVideos");
+					for(var i = 0; i < amount; i++) {
+						var newestVideo = items[i];
+						var videoIFrame = youtubeIframe(newestVideo.id.videoId, 0);
+						var videoWrapperBox = document.createElement('div');
+						videoWrapperBox.className = 'col-md-4';
+						var videoWrapper = document.createElement('div');
+						videoWrapper.className = 'videoWrapper';
+						videoWrapper.appendChild(videoIFrame);
+						videoWrapperBox.appendChild(videoWrapper);
+						historyVideos.appendChild(videoWrapperBox);
+					}
+			}
 			function youtubeRequest() {
 				var request = gapi.client.youtube.search.list({
 					part: 'snippet',
@@ -156,6 +170,8 @@
 						.getElementById("speech-youtube-player")
 						.getElementsByClassName("videoWrapper")[0]
 						.appendChild(videoIFrame);
+
+					appendVideos(response.result.items, 3);
 
 				}, function(reason) {
 					console.log('Error: ' + reason.result.error.message);
@@ -220,10 +236,15 @@
 			</div>
 			<div class="section col-md-12">
 				<div id="speech" class="section-title col-md-6">
-					<h3>講道影音</h3>
-					<h4 id="speech-speaker"></h4>
-					<h4 id="speech-subject"></h4>
-					<h4 id="speech-date"></h4>
+					<div class="col-md-12">
+						<h3><a href="https://www.youtube.com/playlist?list=PLOG2GFgdkqQv_EZxSfvPmnZ85FKW8bst4" target="_blank">講道影音</a></h3>
+						<h4 id="speech-speaker"></h4>
+						<h4 id="speech-subject"></h4>
+						<h4 id="speech-date"></h4>
+					</div>
+					<div id="historyVideos" class="col-md-12">
+
+					</div>
 				</div>
 				<div id="speech-youtube-player" class="section-title col-md-6">
 					<div class="videoWrapper"></div>

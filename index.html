@@ -138,11 +138,11 @@
 				iframe.allowfullscreen = "";
 				return iframe;
 			}
-			function appendVideos(target, items, amount) {
+			function appendVideos(target, videoIdList, amount) {
 				var historyVideos = target;
 					for(var i = 0; i < amount; i++) {
-						var newestVideo = items[i];
-						var videoIFrame = youtubeIframe(newestVideo.id.videoId, 0);
+						var newestVideo = videoIdList[i];
+						var videoIFrame = youtubeIframe(newestVideo, 0);
 						var videoWrapperBox = document.createElement('div');
 						videoWrapperBox.className = 'col-md-4';
 						var videoWrapper = document.createElement('div');
@@ -173,7 +173,11 @@
 						.getElementsByClassName("videoWrapper")[0]
 						.appendChild(videoIFrame);
 
-					appendVideos(document.getElementById("historyVideos"), response.result.items, 3);
+					var videoIdList = [];
+					[].forEach.call(response.result.items, function(item) {
+						videoIdList.push(item.id.videoId);
+					});
+					appendVideos(document.getElementById("historyVideos"), videoIdList, 3);
 
 				}, function(reason) {
 					console.log('Error: ' + reason.result.error.message);
@@ -186,7 +190,11 @@
 				});
 				request.then(function(response) {
 					console.log(response)
-					appendVideos(document.getElementById("songVideos"), response.result.items, 3);
+					var videoIdList = [];
+					[].forEach.call(response.result.items, function(item) {
+						videoIdList.push(item.snippet.resourceId.videoId);
+					});
+					appendVideos(document.getElementById("songVideos"), videoIdList, 3);
 
 				}, function(reason) {
 					console.log('Error: ' + reason.result.error.message);

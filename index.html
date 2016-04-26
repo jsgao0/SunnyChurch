@@ -119,6 +119,7 @@
 		<script type="text/javascript">
 			function youtubeTitleParser(vTitle) {
 				if(typeof vTitle === 'string') {
+					vTitle = vTitle.replace(/\s{2,}/g, ' ');
 					var arr = vTitle.split(" ");
 					return arr;
 				}
@@ -164,7 +165,7 @@
 					document.getElementById("speech-speaker").innerHTML = "講者: " + titleArray[2];
 					document.getElementById("speech-subject").innerHTML = "講題: " + titleArray[1];
 					document.getElementById("speech-date").innerHTML = "日期: " + titleArray[0];
-console.log(titleArray)
+
 					var videoIFrame = youtubeIframe(newestVideo.id.videoId, 0);
 					document
 						.getElementById("speech-youtube-player")

@@ -180,11 +180,9 @@
 				});
 
 				// 領會詩歌
-				var request = gapi.client.youtube.search.list({
+				var request = gapi.client.youtube.playlistItems({
 					part: 'snippet',
-					channelId: 'UC-hKJ5jylBP0LDJ380NPMmA',
-					type: 'playlist',
-					order: 'date'
+					playlistId: 'PLOG2GFgdkqQspMgNCOlenPpwp93hJSjnv'
 				});
 				request.then(function(response) {
 					console.log(response)

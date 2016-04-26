@@ -138,8 +138,8 @@
 				iframe.allowfullscreen = "";
 				return iframe;
 			}
-			function appendVideos(items, amount) {
-				var historyVideos = document.getElementById("historyVideos");
+			function appendVideos(target, items, amount) {
+				var historyVideos = target;
 					for(var i = 0; i < amount; i++) {
 						var newestVideo = items[i];
 						var videoIFrame = youtubeIframe(newestVideo.id.videoId, 0);
@@ -153,6 +153,7 @@
 					}
 			}
 			function youtubeRequest() {
+				// 主日影音
 				var request = gapi.client.youtube.search.list({
 					part: 'snippet',
 					channelId: 'UC-hKJ5jylBP0LDJ380NPMmA',
@@ -172,11 +173,26 @@
 						.getElementsByClassName("videoWrapper")[0]
 						.appendChild(videoIFrame);
 
-					appendVideos(response.result.items, 3);
+					appendVideos(document.getElementById("historyVideos"), response.result.items, 3);
 
 				}, function(reason) {
 					console.log('Error: ' + reason.result.error.message);
-				})
+				});
+
+				// 領會詩歌
+				var request = gapi.client.youtube.search.list({
+					part: 'snippet',
+					channelId: 'UC-hKJ5jylBP0LDJ380NPMmA',
+					type: 'playlist',
+					order: 'date'
+				});
+				request.then(function(response) {
+					console.log(response)
+					appendVideos(document.getElementById("songVideos"), response.result.items, 3);
+
+				}, function(reason) {
+					console.log('Error: ' + reason.result.error.message);
+				});
 			}
 			function init() {
 				gapi.client.setApiKey('AIzaSyAQvs6nopJKOg90JVq52KCze8zavB8hEpY');
@@ -243,21 +259,17 @@
 						<h4 id="speech-subject"></h4>
 						<h4 id="speech-date"></h4>
 					</div>
-					<div id="historyVideos" class="col-md-12">
-
-					</div>
+					<div id="historyVideos" class="col-md-12"></div>
 				</div>
 				<div id="speech-youtube-player" class="section-title col-md-6">
 					<div class="videoWrapper"></div>
 				</div>
 			</div>
 			<div class="section col-md-12">
-				<div id="song" class="section-title col-md-6">
+				<div id="song" class="section-title col-md-12">
 					<h3>領會詩歌</h3>
 				</div>
-				<div id="song-youtube-player" class="section-title col-md-6">
-					<div class="videoWrapper"></div>
-				</div>
+				<div id="songVideos" class="col-md-12"></div>
 			</div>
 			<div class="section col-md-12">
 				<div id="introduction" class="section-title col-md-12">

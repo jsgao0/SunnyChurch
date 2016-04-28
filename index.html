@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sunnychurch">
+	<head>
+    	<meta charset='utf-8'>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta property="og:title" content="財團法人台北市基督教興隆教會">
+		<meta property="og:description" content="健康、受造、行善、宣教；幸福的家庭、聖潔的教會。">
+		<meta property="og:type" content="website">
+	    <meta property="og:image" content="http://www.sunnychurch.org.tw/public/photo/anson-banner.jpg"/>
+	    <meta property="og:site_name" content="財團法人台北市基督教興隆教會"/>
+
+    	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<title>基督教 | 興隆教會 | 財團法人 | 台北市</title>
+		<style type="text/css">
+			html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers  article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; }*/
+		</style>
+		<link href='//fonts.googleapis.com/css?family=Cardo:400italic' rel='stylesheet' type='text/css'>
+		<script src="//s3-ap-northeast-1.amazonaws.com/justfont-user-script/jf-39138.js"></script>
+		<style type="text/css">.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }</style>
+		<link rel="stylesheet" type="text/css" href="./public/components/bootstrap/dist/css/bootstrap.min.css">
+		<style type="text/css">
+			body {
+				font-family: Microsoft JhengHei, PMingLiU, "儷宋 Pro", "LiSong Pro", "蘋果儷細宋", "Apple LiSong", "Arial Narrow", Arial, Helvetica, sans-serif !important;
+			}
+			.navbar-default {
+				/*background-color: rgba(248, 150, 63, .6) !important;*/
+				background: rgba(240, 152, 25, .8); /* fallback for old browsers */
+				background: -webkit-linear-gradient(to left, rgba(240, 152, 25, .8) , rgba(237, 222, 93, .8)); /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to left, rgba(240, 152, 25, .8), rgba(237, 222, 93, .8)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+			}
+			.navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
+				color: #000;
+			}
+			footer {
+				padding: 40px 0;
+			}
+			img {
+				max-width: 100%;
+			}
+			#main-banner {
+				background: url("public/photo/anson-banner.jpg") center top no-repeat;
+				height: 500px;
+			}
+			#footer-slogan {
+				padding: 20px;
+			}
+			.highlight {
+				text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+			}
+			.header-placeholder {
+				height: 50px;
+			}
+			.container .section {
+				margin: 15px 0;
+				/*height: 400px;*/
+			}
+			.container .section:nth-of-type(odd) {
+				/*background: #eee;*/
+				background-color: rgba(248, 150, 63, .6);
+			}
+			.videoWrapper {
+				position: relative;
+				padding-bottom: 56.25%; /* 16:9 */
+				padding-top: 25px;
+				height: 0;
+			}
+			.videoWrapper iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+		<style type="text/css">
+			@media screen and (max-width: 779px) {
+				#main-banner {
+					background: url("public/photo/anson-banner.jpg") 30% top no-repeat;
+					height: 400px;
+				}
+			}
+		</style>
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+			try {
+				var pageTracker = _gat._getTracker("UA-70457259-1");
+				pageTracker._trackPageview();
+			} catch(err) {}
+		</script>
+		<script type="text/javascript" src="./public/components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="//maps.google.com/maps/api/js"></script>
+		<script type="text/javascript" src="//rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.min.js"></script>
+		<script type="text/javascript" src="./public/javascript/ui-bootstrap-tpls-0.13.0.min.js"></script>
+		<script type="text/javascript">
+			angular.module('sunnychurch', ['ui.bootstrap', 'ngMap'])
+			.controller('headerCtrl', function($scope, $http) {
+				$scope.isMenuCollapsed = false;
+				// test
+				// $http.jsonp("http://still-falls-2083.herokuapp.com/db")
+				// 	.success(function(data, status) {
+				// 		console.log(data);
+				// 	})
+			});
+			// .controller('CarouselDemoCtrl', function ($scope) {
+			// 	$scope.myInterval = 5000;
+			// 	$scope.noWrapSlides = false;
+			// 	var slides = ['3649', '3727', '3789', '5637', '5642', '5661'];
+			// 	$scope.slides = slides.map(function(e) {
+			// 		return {
+			// 			image: '/public/photo/_DSC' + e + '.jpg'
+			// 		};
+			// 	});
+			// });
+		</script>
+
+		<script type="text/javascript">
+			function youtubeTitleParser(vTitle) {
+				if(typeof vTitle === 'string') {
+					vTitle = vTitle.replace(/\s{2,}/g, ' ');
+					var arr = vTitle.split(" ");
+					return arr;
+				}
+			}
+
+			// url: String
+			// height: Integer
+			// width: Integer
+			// autoplay: Bit(0 or 1)
+			function youtubeIframe(vid, autoplay) {
+				var iframe = document.createElement('iframe');
+				var url = "http://youtube.com/embed/" + vid;
+				if(autoplay == 1) url += "?autoplay=1";
+				iframe.setAttribute("src", url);
+				iframe.frameBorder = 0;
+				iframe.allowfullscreen = "";
+				return iframe;
+			}
+			function appendVideos(target, videoIdList, amount) {
+				var historyVideos = target;
+					for(var i = 0; i < amount; i++) {
+						var newestVideo = videoIdList[i];
+						var videoIFrame = youtubeIframe(newestVideo, 0);
+						var videoWrapperBox = document.createElement('div');
+						videoWrapperBox.className = 'col-md-4';
+						var videoWrapper = document.createElement('div');
+						videoWrapper.className = 'videoWrapper';
+						videoWrapper.appendChild(videoIFrame);
+						videoWrapperBox.appendChild(videoWrapper);
+						historyVideos.appendChild(videoWrapperBox);
+					}
+			}
+			function youtubeRequest() {
+				// 主日影音
+				var request = gapi.client.youtube.search.list({
+					part: 'snippet',
+					channelId: 'UC-hKJ5jylBP0LDJ380NPMmA',
+					type: 'video',
+					order: 'date'
+				});
+				request.then(function(response) {
+					var newestVideo = response.result.items[0];
+					var titleArray = youtubeTitleParser(newestVideo.snippet.title);
+					document.getElementById("speech-speaker").innerHTML = "講者: " + titleArray[2];
+					document.getElementById("speech-subject").innerHTML = "講題: " + titleArray[1];
+					document.getElementById("speech-date").innerHTML = "日期: " + titleArray[0];
+
+					var videoIFrame = youtubeIframe(newestVideo.id.videoId, 0);
+					document
+						.getElementById("speech-youtube-player")
+						.getElementsByClassName("videoWrapper")[0]
+						.appendChild(videoIFrame);
+
+					var videoIdList = [];
+					[].forEach.call(response.result.items, function(item) {
+						videoIdList.push(item.id.videoId);
+					});
+					appendVideos(document.getElementById("historyVideos"), videoIdList, 3);
+
+				}, function(reason) {
+					console.log('Error: ' + reason.result.error.message);
+				});
+
+				// 領會詩歌
+				var request = gapi.client.youtube.playlistItems.list({
+					part: 'snippet',
+					playlistId: 'PLOG2GFgdkqQspMgNCOlenPpwp93hJSjnv'
+				});
+				request.then(function(response) {
+					console.log(response)
+					var videoIdList = [];
+					[].forEach.call(response.result.items, function(item) {
+						videoIdList.push(item.snippet.resourceId.videoId);
+					});
+					appendVideos(document.getElementById("songVideos"), videoIdList, 3);
+
+				}, function(reason) {
+					console.log('Error: ' + reason.result.error.message);
+				});
+			}
+			function init() {
+				gapi.client.setApiKey('AIzaSyAQvs6nopJKOg90JVq52KCze8zavB8hEpY');
+				gapi.client.load('youtube', 'v3').then(youtubeRequest);
+			}
+		</script>
+		<script src="https://apis.google.com/js/client.js?onload=init"></script>
+	</head>
+	<body>
+		<header class="navbar navbar-default navbar-fixed-top" ng-controller="headerCtrl">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" ng-click="isMenuCollapsed = !isMenuCollapsed">
+	                    <span class="sr-only">Toggle navigation</span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                </button>
+					<a id="church-logo" class="navbar-brand visible-xs">興隆教會</a>
+				</div>
+
+				<nav class="hidden-xs">
+	                <ul class="nav navbar-nav">
+	                    <a href="#top" role="button" class="navbar-brand">興隆教會</a>
+                        <li><a href="#announcement">教會消息</a></li>
+                        <li><a href="#schedule">教會行事曆</a></li>
+                        <li><a href="#speech">講道影音</a></li>
+                		<li><a href="#song">會議記錄</a></li>
+                        <li><a href="#introduction">教會簡介</a></li>
+	                </ul>
+	            </nav>
+				<nav collapse="!isMenuCollapsed">
+	                <ul class="nav navbar-nav">
+                        <li><a href="#announcement" ng-click="isMenuCollapsed = !isMenuCollapsed">教會消息</a></li>
+                        <li><a href="#schedule" ng-click="isMenuCollapsed = !isMenuCollapsed">教會行事曆</a></li>
+                        <li><a href="#speech" ng-click="isMenuCollapsed = !isMenuCollapsed">講道影音</a></li>
+                        <li><a href="#song" ng-click="isMenuCollapsed = !isMenuCollapsed">教會事奉</a></li>
+                        <li><a href="#introduction" ng-click="isMenuCollapsed = !isMenuCollapsed">教會簡介</a></li>
+	                </ul>
+	            </nav>
+			</div>
+		</header>
+		<div class="header-placeholder"></div>
+		<div id="main-banner">
+		</div>
+
+		<div class="container">
+			<div class="section col-md-12">
+				<div id="announcement" class="section-title col-md-6">
+					<h3>教會消息</h3>
+				</div>
+				<div id="schedule" class="section-title col-md-6">
+					<h3>教會行事曆</h3>
+					<div class="col-md-12">
+						<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=300&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=slc167%40gmail.com&amp;color=%23691426&amp;ctz=Asia%2FTaipei" style="border-width:0;display:block;margin:15px auto;" width="auto" height="300" frameborder="0" scrolling="no"></iframe>
+					</div>
+				</div>
+			</div>
+			<div class="section col-md-12">
+				<div id="speech" class="section-title col-md-6">
+					<div class="col-md-12">
+						<h3><a href="https://www.youtube.com/playlist?list=PLOG2GFgdkqQv_EZxSfvPmnZ85FKW8bst4" target="_blank">講道影音</a></h3>
+						<h4 id="speech-speaker"></h4>
+						<h4 id="speech-subject"></h4>
+						<h4 id="speech-date"></h4>
+					</div>
+					<div id="historyVideos" class="col-md-12"></div>
+				</div>
+				<div id="speech-youtube-player" class="section-title col-md-6">
+					<div class="videoWrapper"></div>
+				</div>
+			</div>
+			<div class="section col-md-12">
+				<div id="song" class="section-title col-md-12">
+					<h3>領會詩歌</h3>
+				</div>
+				<div id="songVideos" class="col-md-12"></div>
+			</div>
+			<div class="section col-md-12">
+				<div id="introduction" class="section-title col-md-12">
+					<h3>教會簡介</h3>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<div id="footer-slogan" class="col-md-12 text-center">
+				<h2>幸福的家庭, 聖潔的教會</h2>
+			</div>
+			<div class="container">
+				<div class="col-md-12">
+					<div class="col-md-7">
+						<div class="col-md-12">
+							<h1>
+								財團法人台北市基督教興隆教會
+								<a href="https://www.facebook.com/profile.php?id=100001582452250" target="_blank" title="興隆教會的Facebook官方帳號，您可以在上面看到許多最新動態。">
+									<img src="public/image/facebook2.png" style="margin-top: -8px;">
+								</a>
+							</h1>
+						</div>
+						<div class="col-md-8">
+							<p>戶名：財團法人台北市基督教興隆教會</p>
+							<p>統編：01039405</p>
+							<p>郵局劃撥帳號：17908921</p>
+							<ins>神能將各樣的恩惠，多多的加給你們。使你們凡事常常充足，能多行各樣善事。如經上所記『他施捨錢財，賙濟貧窮，他的仁義存到永遠』〈林後九：8-9〉</ins>
+						</div>
+						<div class="col-md-4">
+							<p>聯絡我們</p>
+							<p>台北市文山區景華街167號</p>
+							<p>
+								<a href="tel:（02）2932-2638">（02）2932-2638</a>
+								<a href="mailto: slc167@gmail.com">電子郵件</a>
+							</p>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<map center="24.9963818, 121.5474804" zoom="16">
+							<marker position="24.9963818, 121.5474804" icon="./public/image/tsl_logo.jpg"></marker>
+						</map>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>

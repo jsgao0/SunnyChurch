@@ -64,6 +64,9 @@
 				padding-top: 25px;
 				height: 0;
 			}
+			#songVideos .videoWrapper {
+				margin: 15px 0;
+			}
 			.videoWrapper iframe {
 				position: absolute;
 				top: 0;
@@ -135,16 +138,18 @@
 				if(autoplay == 1) url += "?autoplay=1";
 				iframe.setAttribute("src", url);
 				iframe.frameBorder = 0;
-				iframe.allowfullscreen = "";
+				iframe.setAttribute('allowfullscreen', '');
 				return iframe;
 			}
-			function appendVideos(target, videoIdList, amount) {
-				var historyVideos = target;
-					for(var i = 0; i < amount; i++) {
+			function appendVideos(target, videoIdList, amount, start) {
+				var historyVideos = target,
+				    start = start || 0,
+				    gridSize = 12 % (amount - start) == 0 ? 12 / (amount - start) : 4;
+					for(var i = start; i < amount; i++) {
 						var newestVideo = videoIdList[i];
 						var videoIFrame = youtubeIframe(newestVideo, 0);
 						var videoWrapperBox = document.createElement('div');
-						videoWrapperBox.className = 'col-md-4';
+						videoWrapperBox.className = 'col-md-' + gridSize;
 						var videoWrapper = document.createElement('div');
 						videoWrapper.className = 'videoWrapper';
 						videoWrapper.appendChild(videoIFrame);
@@ -177,7 +182,7 @@
 					[].forEach.call(response.result.items, function(item) {
 						videoIdList.push(item.id.videoId);
 					});
-					appendVideos(document.getElementById("historyVideos"), videoIdList, 3);
+					appendVideos(document.getElementById("historyVideos"), videoIdList, 3, 1);
 
 				}, function(reason) {
 					console.log('Error: ' + reason.result.error.message);
@@ -186,7 +191,7 @@
 				// 領會詩歌
 				var request = gapi.client.youtube.playlistItems.list({
 					part: 'snippet',
-					playlistId: 'PLOG2GFgdkqQspMgNCOlenPpwp93hJSjnv'
+					playlistId: 'PLOG2GFgdkqQskMTh4XBFVgEUk9XoyMiWv'
 				});
 				request.then(function(response) {
 					console.log(response)

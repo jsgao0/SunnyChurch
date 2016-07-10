@@ -3,14 +3,16 @@
 	<head>
     	<meta charset='utf-8'>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="興隆教會是位於文山區景華街上的一個社區型教會，每個星期日有一百多人參與主日崇拜。主日崇拜共分三個年齡層，有成人、青少年及兒童，以符合各年齡層能夠理解的方式傳講上帝純正的話語。我們看重神的話語，因為神的話是我們生命的靈糧，並且帶有大能力可以聖化我們的生命。 除主日崇拜外，週間也有小組聚會。『小組』是由年齡或屬性相近的基督徒們所組成，在週間一起研讀聖經、分享生活見證，像家人可以彼此相愛，互相鼓勵，活出真理、同享平安、喜樂的生命。興隆教會也期望自己能成為社區的好鄰舍，因此教會提供教牧諮商輔導的服務，是由牧師、傳道以基督信仰為基礎，融合了現代心理學的知識以及助人的技巧，提供身、心靈全人的關懷與協助。此外，我們也會舉辦各種不同的活動，如野外崇拜、聖誕晚會，來記念神的恩典，並與人分享福音的好處。 興隆教會歷經35個年頭，回首過往，所行的路徑都充滿神的信實與恩典，而每一個參與在教會的人,也都經歷到神在各方面的祝福，包括工作和家庭的需要，興隆教會的的確確是一個能讓人經歷到真神同在的地方。">
 		<meta property="og:title" content="財團法人台北市基督教興隆教會">
-		<meta property="og:description" content="健康、受造、行善、宣教；幸福的家庭、聖潔的教會。">
+		<meta property="og:description" content="興隆教會是位於文山區景華街上的一個社區型教會，每個星期日有一百多人參與主日崇拜。主日崇拜共分三個年齡層，有成人、青少年及兒童，以符合各年齡層能夠理解的方式傳講上帝純正的話語。我們看重神的話語，因為神的話是我們生命的靈糧，並且帶有大能力可以聖化我們的生命。 除主日崇拜外，週間也有小組聚會。『小組』是由年齡或屬性相近的基督徒們所組成，在週間一起研讀聖經、分享生活見證，像家人可以彼此相愛，互相鼓勵，活出真理、同享平安、喜樂的生命。興隆教會也期望自己能成為社區的好鄰舍，因此教會提供教牧諮商輔導的服務，是由牧師、傳道以基督信仰為基礎，融合了現代心理學的知識以及助人的技巧，提供身、心靈全人的關懷與協助。此外，我們也會舉辦各種不同的活動，如野外崇拜、聖誕晚會，來記念神的恩典，並與人分享福音的好處。 興隆教會歷經35個年頭，回首過往，所行的路徑都充滿神的信實與恩典，而每一個參與在教會的人,也都經歷到神在各方面的祝福，包括工作和家庭的需要，興隆教會的的確確是一個能讓人經歷到真神同在的地方。">
 		<meta property="og:type" content="website">
 	    <meta property="og:image" content="http://www.sunnychurch.org.tw/public/photo/anson-banner.jpg"/>
 	    <meta property="og:site_name" content="財團法人台北市基督教興隆教會"/>
 
     	<meta http-equiv="X-UA-Compatible" content="chrome=1">
 		<title>基督教 | 興隆教會 | 財團法人 | 台北市</title>
+        <link rel="shortcut icon" href="./public/image/favicon.ico" />
 		<style type="text/css">
 			html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; } /* HTML5 display-role reset for older browsers  article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; } body { line-height: 1; } ol, ul { list-style: none; } blockquote, q { quotes: none; } blockquote:before, blockquote:after, q:before, q:after { content: ''; content: none; } table { border-collapse: collapse; border-spacing: 0; }*/
 		</style>
@@ -31,7 +33,7 @@
 			.navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
 				color: #000;
 			}
-			footer {
+			body > footer {
 				padding: 40px 0;
 			}
 			img {
@@ -63,6 +65,9 @@
 				padding-bottom: 56.25%; /* 16:9 */
 				padding-top: 25px;
 				height: 0;
+			}
+			#songVideos .videoWrapper {
+				margin: 15px 0;
 			}
 			.videoWrapper iframe {
 				position: absolute;
@@ -135,16 +140,18 @@
 				if(autoplay == 1) url += "?autoplay=1";
 				iframe.setAttribute("src", url);
 				iframe.frameBorder = 0;
-				iframe.allowfullscreen = "";
+				iframe.setAttribute('allowfullscreen', '');
 				return iframe;
 			}
-			function appendVideos(target, videoIdList, amount) {
-				var historyVideos = target;
-					for(var i = 0; i < amount; i++) {
+			function appendVideos(target, videoIdList, amount, start) {
+				var historyVideos = target,
+				    start = start || 0,
+				    gridSize = 12 % (amount - start) == 0 ? 12 / (amount - start) : 4;
+					for(var i = start; i < amount; i++) {
 						var newestVideo = videoIdList[i];
 						var videoIFrame = youtubeIframe(newestVideo, 0);
 						var videoWrapperBox = document.createElement('div');
-						videoWrapperBox.className = 'col-md-4';
+						videoWrapperBox.className = 'col-md-' + gridSize;
 						var videoWrapper = document.createElement('div');
 						videoWrapper.className = 'videoWrapper';
 						videoWrapper.appendChild(videoIFrame);
@@ -177,7 +184,7 @@
 					[].forEach.call(response.result.items, function(item) {
 						videoIdList.push(item.id.videoId);
 					});
-					appendVideos(document.getElementById("historyVideos"), videoIdList, 3);
+					appendVideos(document.getElementById("historyVideos"), videoIdList, 3, 1);
 
 				}, function(reason) {
 					console.log('Error: ' + reason.result.error.message);
@@ -186,7 +193,7 @@
 				// 領會詩歌
 				var request = gapi.client.youtube.playlistItems.list({
 					part: 'snippet',
-					playlistId: 'PLOG2GFgdkqQspMgNCOlenPpwp93hJSjnv'
+					playlistId: 'PLOG2GFgdkqQskMTh4XBFVgEUk9XoyMiWv'
 				});
 				request.then(function(response) {
 					console.log(response)
@@ -200,9 +207,19 @@
 					console.log('Error: ' + reason.result.error.message);
 				});
 			}
+			function driveRequest() {
+				var request = gapi.client.drive.files.list({
+					q: 'name="Documents" and mimeType="application/vnd.google-apps.folder"',
+					fields: 'files(contentHints/thumbnail,createdTime,description,fileExtension,fullFileExtension,iconLink,id,mimeType,modifiedTime,name,parents,shared,size,thumbnailLink,webContentLink,webViewLink)'
+				});
+				request.then(function(response) {
+					console.log(response);
+				});
+			}
 			function init() {
 				gapi.client.setApiKey('AIzaSyAQvs6nopJKOg90JVq52KCze8zavB8hEpY');
 				gapi.client.load('youtube', 'v3').then(youtubeRequest);
+				gapi.client.load('drive', 'v3').then(driveRequest);
 			}
 		</script>
 		<script src="https://apis.google.com/js/client.js?onload=init"></script>
@@ -226,7 +243,7 @@
                         <li><a href="#announcement">教會消息</a></li>
                         <li><a href="#schedule">教會行事曆</a></li>
                         <li><a href="#speech">講道影音</a></li>
-                		<li><a href="#song">會議記錄</a></li>
+                	<li><a href="#song">領會詩歌</a></li>
                         <li><a href="#introduction">教會簡介</a></li>
 	                </ul>
 	            </nav>
@@ -235,7 +252,7 @@
                         <li><a href="#announcement" ng-click="isMenuCollapsed = !isMenuCollapsed">教會消息</a></li>
                         <li><a href="#schedule" ng-click="isMenuCollapsed = !isMenuCollapsed">教會行事曆</a></li>
                         <li><a href="#speech" ng-click="isMenuCollapsed = !isMenuCollapsed">講道影音</a></li>
-                        <li><a href="#song" ng-click="isMenuCollapsed = !isMenuCollapsed">教會事奉</a></li>
+                        <li><a href="#song" ng-click="isMenuCollapsed = !isMenuCollapsed">領會詩歌</a></li>
                         <li><a href="#introduction" ng-click="isMenuCollapsed = !isMenuCollapsed">教會簡介</a></li>
 	                </ul>
 	            </nav>
@@ -246,7 +263,7 @@
 		</div>
 
 		<div class="container">
-			<div class="section col-md-12">
+			<div class="section row">
 				<div id="announcement" class="section-title col-md-6">
 					<h3>教會消息</h3>
 				</div>
@@ -257,38 +274,48 @@
 					</div>
 				</div>
 			</div>
-			<div class="section col-md-12">
+			<div class="section row">
 				<div id="speech" class="section-title col-md-6">
+                    <h3>
+                        講道影音
+                        <a class="small" href="https://www.youtube.com/playlist?list=PLOG2GFgdkqQv_EZxSfvPmnZ85FKW8bst4" target="_blank">
+                            <u>Youtube頻道</u>
+                        </a>
+                    </h3>
 					<div class="col-md-12">
-						<h3><a href="https://www.youtube.com/playlist?list=PLOG2GFgdkqQv_EZxSfvPmnZ85FKW8bst4" target="_blank">講道影音</a></h3>
 						<h4 id="speech-speaker"></h4>
 						<h4 id="speech-subject"></h4>
 						<h4 id="speech-date"></h4>
 					</div>
-					<div id="historyVideos" class="col-md-12"></div>
+					<div id="historyVideos" class="row visible-md"></div>
 				</div>
 				<div id="speech-youtube-player" class="section-title col-md-6">
 					<div class="videoWrapper"></div>
 				</div>
 			</div>
-			<div class="section col-md-12">
+			<div class="section row">
 				<div id="song" class="section-title col-md-12">
 					<h3>領會詩歌</h3>
 				</div>
 				<div id="songVideos" class="col-md-12"></div>
 			</div>
-			<div class="section col-md-12">
+			<div class="section row">
 				<div id="introduction" class="section-title col-md-12">
 					<h3>教會簡介</h3>
+                    <p>親愛的朋友，歡迎您來到興隆教會網站。</p>
+                    <p>興隆教會是位於文山區景華街上的一個社區型教會，每個星期日有一百多人參與主日崇拜。主日崇拜共分三個年齡層，有成人、青少年及兒童，以符合各年齡層能夠理解的方式傳講上帝純正的話語。我們看重神的話語，因為神的話是我們生命的靈糧，並且帶有大能力可以聖化我們的生命。</p>
+                    <p>除主日崇拜外，週間也有小組聚會。『小組』是由年齡或屬性相近的基督徒們所組成，在週間一起研讀聖經、分享生活見證，像家人可以彼此相愛，互相鼓勵，活出真理、同享平安、喜樂的生命。興隆教會也期望自己能成為社區的好鄰舍，因此教會提供教牧諮商輔導的服務，是由牧師、傳道以基督信仰為基礎，融合了現代心理學的知識以及助人的技巧，提供身、心靈全人的關懷與協助。此外，我們也會舉辦各種不同的活動，如野外崇拜、聖誕晚會，來記念神的恩典，並與人分享福音的好處。</p>
+                    <p>興隆教會歷經35個年頭，回首過往，所行的路徑都充滿神的信實與恩典，而每一個參與在教會的人,也都經歷到神在各方面的祝福，包括工作和家庭的需要，興隆教會的的確確是一個能讓人經歷到真神同在的地方。</p>
+                    <p>所以，我們熱誠歡迎您們加入這個大家庭，一同認識、經歷上帝的賜福與保護。</p>
 				</div>
 			</div>
 		</div>
 		<footer>
-			<div id="footer-slogan" class="col-md-12 text-center">
-				<h2>幸福的家庭, 聖潔的教會</h2>
+			<div id="footer-slogan" class="row text-center">
+				<h2>幸福的家庭、聖潔的教會</h2>
 			</div>
 			<div class="container">
-				<div class="col-md-12">
+				<div class="row">
 					<div class="col-md-7">
 						<div class="col-md-12">
 							<h1>
@@ -298,28 +325,64 @@
 								</a>
 							</h1>
 						</div>
-						<div class="col-md-8">
-							<p>戶名：財團法人台北市基督教興隆教會</p>
-							<p>統編：01039405</p>
-							<p>郵局劃撥帳號：17908921</p>
-							<ins>神能將各樣的恩惠，多多的加給你們。使你們凡事常常充足，能多行各樣善事。如經上所記『他施捨錢財，賙濟貧窮，他的仁義存到永遠』〈林後九：8-9〉</ins>
-						</div>
-						<div class="col-md-4">
-							<p>聯絡我們</p>
-							<p>台北市文山區景華街167號</p>
-							<p>
-								<a href="tel:（02）2932-2638">（02）2932-2638</a>
-								<a href="mailto: slc167@gmail.com">電子郵件</a>
-							</p>
+						<div class="col-md-12">
+							<h4>戶名：財團法人台北市基督教興隆教會</h4>
+							<h4>統編：01039405</h4>
+							<h4>郵局劃撥帳號：17908921</h4>
+                            <blockquote>
+                                <p>神能將各樣的恩惠，多多的加給你們。使你們凡事常常充足，能多行各樣善事。如經上所記『他施捨錢財，賙濟貧窮，他的仁義存到永遠』</p>
+                                <footer>林後九：8-9</footer>
+                            </blockquote>
 						</div>
 					</div>
 					<div class="col-md-5">
 						<map center="24.9963818, 121.5474804" zoom="16">
 							<marker position="24.9963818, 121.5474804" icon="./public/image/tsl_logo.jpg"></marker>
 						</map>
+                        <div class="row text-right">
+                            <div class="col-md-12 hidden-xs hidden-sm">
+                                <h4>
+                                    <strong>台北市文山區景華街167號</strong>
+                                    <a class="glyphicon glyphicon-link" target="_blank" href="https://www.google.com.tw/maps/place/%E8%B2%A1%E5%9C%98%E6%B3%95%E4%BA%BA%E5%8F%B0%E5%8C%97%E5%B8%82%E5%9F%BA%E7%9D%A3%E6%95%99%E8%88%88%E9%9A%86%E6%95%99%E6%9C%83/@24.9962262,121.5463539,17z/data=!4m5!3m4!1s0x0:0x8d65412c7ee5423f!8m2!3d24.9963818!4d121.5474804"></a>
+                                </h4>
+                            </div>
+                            <div class="col-md-12 hidden-md hidden-lg">
+                                <h4>
+                                    <a href="tel:（02）2932-2638">
+                                        <span class="glyphicon glyphicon-phone-alt"></span>
+                                    </a>
+                                    <a href="mailto: slc167@gmail.com">
+                                        <span class="glyphicon glyphicon-envelope"></span>
+                                    </a>
+                                    <strong>台北市文山區景華街167號</strong>
+                                    <a class="glyphicon glyphicon-link" target="_blank" href="https://www.google.com.tw/maps/place/%E8%B2%A1%E5%9C%98%E6%B3%95%E4%BA%BA%E5%8F%B0%E5%8C%97%E5%B8%82%E5%9F%BA%E7%9D%A3%E6%95%99%E8%88%88%E9%9A%86%E6%95%99%E6%9C%83/@24.9962262,121.5463539,17z/data=!4m5!3m4!1s0x0:0x8d65412c7ee5423f!8m2!3d24.9963818!4d121.5474804"></a>
+                                </h4>
+                            </div>
+                        </div>
 					</div>
 				</div>
 			</div>
+            <hr>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-12">
+                        <small>版權所有 © 財團法人台北市基督教興隆教會</small>
+                    </div>
+                    <div class="col-md-12">
+                        <small class="glyphicon glyphicon-phone-alt"></small>
+                        <small>02-2932-2638</small>
+                        <span>|</span>
+                        <small class="glyphicon glyphicon-envelope"></small>
+                        <small>slc167@gmail.com</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <small>這個網站的程式碼放置在GitHub，若要回報bug，建議填寫GitHub的issue回覆。</small>
+                        <a class="glyphicon glyphicon-pencil" target="_blank" href="https://github.com/jsgao0/SunnyChurch/issues"></a>
+                    </div>
+                </div>
+            </div>
 		</footer>
 	</body>
 </html>

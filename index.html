@@ -128,6 +128,20 @@
 			// });
 		</script>
 
+        <script>
+            var $_ = {};
+            $_.get = function(filePath, successCB, failCB) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (xhttp.readyState == 4 && xhttp.status == 200) {
+                       successCB(xhttp);
+                    }
+                };
+                xhttp.open("GET", filePath, true);
+                xhttp.send();
+            }
+        </script>
+
 		<script type="text/javascript">
 			function youtubeTitleParser(vTitle) {
 				if(typeof vTitle === 'string') {
@@ -203,7 +217,6 @@
 					playlistId: 'PLOG2GFgdkqQskMTh4XBFVgEUk9XoyMiWv'
 				});
 				request.then(function(response) {
-					console.log(response)
 					var videoIdList = [];
 					[].forEach.call(response.result.items, function(item) {
 						videoIdList.push(item.snippet.resourceId.videoId);
@@ -215,18 +228,36 @@
 				});
 			}
 			function driveRequest() {
-				var request = gapi.client.drive.files.list({
-					q: 'name="Documents" and mimeType="application/vnd.google-apps.folder"',
-					fields: 'files(contentHints/thumbnail,createdTime,description,fileExtension,fullFileExtension,iconLink,id,mimeType,modifiedTime,name,parents,shared,size,thumbnailLink,webContentLink,webViewLink)'
-				});
+				var request = gapi.client.drive.files.get({
+                    'fileId': '14pi0wDZ7Pg-TKyvUyuYKL1lCwIuim7QwkrIk8wxvl2Y'
+                });
 				request.then(function(response) {
-					console.log(response);
+                    var filePath = response.result.exportLinks['text/plain'];
+                    $_.get(filePath, function(xml) {
+                        var resText = xml.responseText;
+                        var newsList = resText.split('\n');
+                        var listMenu = document.createElement('ol');
+                        newsList.forEach(function(news, index, arr) {
+                            var newsEle = null;
+                            if(index === 0) {
+                                newsEle = document.createElement('strong');
+                            } else {
+                                newsEle = document.createElement('span');
+                            }
+                            newsEle.innerHTML = news;
+                            var newsP = document.createElement('p');
+                            newsP.appendChild(newsEle);
+                            listMenu.appendChild(newsP);
+                        });
+                        var menuBox = document.querySelector('#announcement > div');
+                        menuBox.appendChild(listMenu);
+                    })
 				});
 			}
 			function init() {
 				gapi.client.setApiKey('AIzaSyAQvs6nopJKOg90JVq52KCze8zavB8hEpY');
 				gapi.client.load('youtube', 'v3').then(youtubeRequest);
-				gapi.client.load('drive', 'v3').then(driveRequest);
+				gapi.client.load('drive', 'v2').then(driveRequest);
 			}
 		</script>
 		<script src="https://apis.google.com/js/client.js?onload=init"></script>
@@ -273,6 +304,9 @@
 			<div class="section row">
 				<div id="announcement" class="section-title col-md-6">
 					<h3>教會消息</h3>
+                    <div class="col-md-12">
+
+                    </div>
 				</div>
 				<div id="schedule" class="section-title col-md-6">
 					<h3>教會行事曆</h3>

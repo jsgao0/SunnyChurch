@@ -205,9 +205,19 @@
 					console.log('Error: ' + reason.result.error.message);
 				});
 			}
+			function driveRequest() {
+				var request = gapi.client.drive.files.list({
+					q: 'name="Documents" and mimeType="application/vnd.google-apps.folder"',
+					fields: 'files(contentHints/thumbnail,createdTime,description,fileExtension,fullFileExtension,iconLink,id,mimeType,modifiedTime,name,parents,shared,size,thumbnailLink,webContentLink,webViewLink)'
+				});
+				request.then(function(response) {
+					console.log(response);
+				});
+			}
 			function init() {
 				gapi.client.setApiKey('AIzaSyAQvs6nopJKOg90JVq52KCze8zavB8hEpY');
 				gapi.client.load('youtube', 'v3').then(youtubeRequest);
+				gapi.client.load('drive', 'v3').then(driveRequest);
 			}
 		</script>
 		<script src="https://apis.google.com/js/client.js?onload=init"></script>

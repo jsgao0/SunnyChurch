@@ -34,7 +34,7 @@
 				color: #000;
 			}
 			body > footer {
-				padding: 40px 0;
+				padding: 20px 0;
 			}
 			img {
 				max-width: 100%;
@@ -76,6 +76,13 @@
 				width: 100%;
 				height: 100%;
 			}
+            .responsiveCal {
+                position: relative; padding-bottom: 75%; height: 0; overflow: hidden;
+            }
+
+            .responsiveCal iframe {
+                position: absolute; top:0; left: 0; width: 100%; height: 100%;
+            }
 		</style>
 		<style type="text/css">
 			@media screen and (max-width: 779px) {
@@ -269,8 +276,8 @@
 				</div>
 				<div id="schedule" class="section-title col-md-6">
 					<h3>教會行事曆</h3>
-					<div class="col-md-12">
-						<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=300&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=slc167%40gmail.com&amp;color=%23691426&amp;ctz=Asia%2FTaipei" style="border-width:0;display:block;margin:15px auto;" width="auto" height="300" frameborder="0" scrolling="no"></iframe>
+					<div class="col-md-12 responsiveCal">
+						<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=300&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=slc167%40gmail.com&amp;color=%23691426&amp;ctz=Asia%2FTaipei" style="border-width:0;display:block;margin:auto;padding-bottom:5px;" width="auto" height="300" frameborder="0" scrolling="no"></iframe>
 					</div>
 				</div>
 			</div>
@@ -297,7 +304,9 @@
 				<div id="song" class="section-title col-md-12">
 					<h3>領會詩歌</h3>
 				</div>
+                <div class="row">
 				<div id="songVideos" class="col-md-12"></div>
+                </div>
 			</div>
 			<div class="section row">
 				<div id="introduction" class="section-title col-md-12">
@@ -310,6 +319,7 @@
 				</div>
 			</div>
 		</div>
+        <hr>
 		<footer>
 			<div id="footer-slogan" class="row text-center">
 				<h2>幸福的家庭、聖潔的教會</h2>
@@ -362,7 +372,6 @@
 					</div>
 				</div>
 			</div>
-            <hr>
             <div class="container text-center">
                 <div class="row">
                     <div class="col-md-12">
